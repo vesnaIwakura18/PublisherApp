@@ -17,9 +17,6 @@ public class Client {
     @Size(max = 30, message = "Name length must not be greater than 30 characters")
     private String name;
 
-    @ManyToMany(mappedBy = "clients")
-    private List<Book> books;
-
     public Client(String name) {
         this.name = name;
     }
@@ -41,14 +38,6 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
     }
 }
 

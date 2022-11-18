@@ -9,16 +9,16 @@ values ('Test4', 'Test4');
 INSERT INTO author (first_name, last_name)
 values ('Test5', 'Test5');
 
-INSERT INTO book (title, issue_year, amount, author_id)
-VALUES ('Test1', 2000, 50, 1);
-INSERT INTO book (title, issue_year, amount, author_id)
-VALUES ('Test2', 2000, 50, 2);
-INSERT INTO book (title, issue_year, amount, author_id)
-VALUES ('Test3', 2000, 50, 3);
-INSERT INTO book (title, issue_year, amount, author_id)
-VALUES ('Test4', 2000, 50, 4);
-INSERT INTO book (title, issue_year, amount, author_id)
-VALUES ('Test5', 2000, 50, 5);
+INSERT INTO book (title, issue_year, amount)
+VALUES ('Test1', 2000, 50);
+INSERT INTO book (title, issue_year, amount)
+VALUES ('Test2', 2000, 50);
+INSERT INTO book (title, issue_year, amount)
+VALUES ('Test3', 2000, 50);
+INSERT INTO book (title, issue_year, amount)
+VALUES ('Test4', 2000, 50);
+INSERT INTO book (title, issue_year, amount)
+VALUES ('Test5', 2000, 50);
 
 insert into client (amount, name)
 values (20, 'Test1');

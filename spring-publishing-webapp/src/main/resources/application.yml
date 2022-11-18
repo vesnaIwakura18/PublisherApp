@@ -1,0 +1,55 @@
+spring:
+
+
+
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    producer:
+      keySerializer: org.springframework.kafka.support.serializer.JsonSerializer
+      valueSerializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            add:
+              type:
+                headers: false
+
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: 'kz.bisen.springcourse.springpublishingwebapp.kafka.BookIsbnMessage'
+            type:
+              mapping: 'kz.bisen.springwebapp1.project2Boot.kafka.BookIsbnMessage:kz.bisen.springcourse.springpublishingwebapp.kafka.BookIsbnMessage'
+            trusted:
+              packages: 'kz.bisen.springwebapp1.project2Boot.kafka'
+
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/publisherAppDB
+    username: postgres
+    password: postgres
+
+
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: none
+    show-sql: true
+    generate-ddl: true
+
+
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

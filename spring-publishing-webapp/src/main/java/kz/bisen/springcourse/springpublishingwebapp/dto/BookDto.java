@@ -1,14 +1,14 @@
 package kz.bisen.springcourse.springpublishingwebapp.dto;
 
-import kz.bisen.springcourse.springpublishingwebapp.entity.Author;
+import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Data
 public class BookDto {
-
-    private int id;
+    private Integer id;
 
     public int getId() {
         return id;
@@ -25,13 +25,25 @@ public class BookDto {
     @NotNull(message = "Issue year must not be empty")
     private int issueYear;
 
-    @NotNull(message = "author must not be empty")
-    private AuthorDto author;
+    @NotNull(message = "amount must not be null")
+    private int amount;
 
-    public BookDto(String title, int issueYear, AuthorDto author) {
+    @NotEmpty
+    private String isbn;
+
+    public BookDto(String title, int issueYear, int amount, String isbn) {
         this.title = title;
         this.issueYear = issueYear;
-        this.author = author;
+        this.amount = amount;
+        this.isbn = isbn;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public BookDto() {
@@ -53,11 +65,18 @@ public class BookDto {
         this.issueYear = issueYear;
     }
 
-    public AuthorDto getAuthor() {
-        return author;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setAuthor(AuthorDto author) {
-        this.author = author;
+    @Override
+    public String toString() {
+        return "BookDto{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", issueYear=" + issueYear +
+                ", amount=" + amount +
+                '}';
     }
 }
+

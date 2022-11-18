@@ -1,10 +1,11 @@
 package kz.bisen.springcourse.springpublishingwebapp.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Table
@@ -22,22 +23,25 @@ public class Book {
     @NotNull
     private int issueYear;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
-    private Author author;
+    @Column
+    private int amount;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "book_client",
-            joinColumns = { @JoinColumn(name = "client_id") },
-            inverseJoinColumns = { @JoinColumn(name = "book_id") }
-    )
-    private List<Client> clients;
+    @Column
+    private String isbn;
 
-    public Book(String title, int issueYear, Author author) {
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Book(String title, int issueYear, int amount, String isbn) {
         this.title = title;
         this.issueYear = issueYear;
-        this.author = author;
+        this.amount = amount;
+        this.isbn = isbn;
     }
 
     public Book() {
@@ -67,11 +71,11 @@ public class Book {
         this.issueYear = issueYear;
     }
 
-    public Author getAuthor() {
-        return author;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }

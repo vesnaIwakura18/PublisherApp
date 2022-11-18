@@ -10,6 +10,7 @@ import java.util.Objects;
 @Table
 public class Author {
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -22,9 +23,6 @@ public class Author {
     @NotEmpty(message = "First name must not be empty")
     @Size(max = 30, message = "Last name length must not be greater than 30 characters")
     private String lastName;
-
-    @OneToMany(mappedBy = "author")
-    private List<Book> books;
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
@@ -56,13 +54,5 @@ public class Author {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
     }
 }

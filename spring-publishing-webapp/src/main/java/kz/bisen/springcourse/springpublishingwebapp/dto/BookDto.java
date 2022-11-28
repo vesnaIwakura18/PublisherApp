@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Data
 public class BookDto {
@@ -23,7 +24,7 @@ public class BookDto {
     private String title;
 
     @NotNull(message = "Issue year must not be empty")
-    private int issueYear;
+    private LocalDateTime issueDateTime;
 
     @NotNull(message = "amount must not be null")
     private int amount;
@@ -31,9 +32,9 @@ public class BookDto {
     @NotEmpty
     private String isbn;
 
-    public BookDto(String title, int issueYear, int amount, String isbn) {
+    public BookDto(String title, LocalDateTime issueDateTime, int amount, String isbn) {
         this.title = title;
-        this.issueYear = issueYear;
+        this.issueDateTime = issueDateTime;
         this.amount = amount;
         this.isbn = isbn;
     }
@@ -57,12 +58,12 @@ public class BookDto {
         this.title = title;
     }
 
-    public int getIssueYear() {
-        return issueYear;
+    public LocalDateTime getIssueDateTime() {
+        return issueDateTime;
     }
 
-    public void setIssueYear(int issueYear) {
-        this.issueYear = issueYear;
+    public void setIssueDateTime(LocalDateTime issueDateTime) {
+        this.issueDateTime = issueDateTime;
     }
 
     public void setId(Integer id) {
@@ -74,7 +75,7 @@ public class BookDto {
         return "BookDto{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", issueYear=" + issueYear +
+                ", issueDateTime=" + issueDateTime +
                 ", amount=" + amount +
                 '}';
     }

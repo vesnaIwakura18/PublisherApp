@@ -6,11 +6,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Entity
 @Table
 public class Book {
     @Id
+    @JoinColumns(value = {
+            @JoinColumn(table = "Book"),
+            @JoinColumn(table = "Book_scan")
+    })
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -21,13 +26,17 @@ public class Book {
 
     @Column
     @NotNull
-    private int issueYear;
+    private LocalDateTime issueDateTime;
 
     @Column
     private int amount;
 
     @Column
     private String isbn;
+
+    @Column
+    @JoinTable(name = "book_scan")
+    private LocalDateTime scannedDateTime;
 
     public int getAmount() {
         return amount;
@@ -37,9 +46,9 @@ public class Book {
         this.amount = amount;
     }
 
-    public Book(String title, int issueYear, int amount, String isbn) {
+    public Book(String title, LocalDateTime issueDateTime, int amount, String isbn) {
         this.title = title;
-        this.issueYear = issueYear;
+        this.issueDateTime = issueDateTime;
         this.amount = amount;
         this.isbn = isbn;
     }
@@ -63,12 +72,12 @@ public class Book {
         this.title = title;
     }
 
-    public int getIssueYear() {
-        return issueYear;
+    public LocalDateTime getIssueDateTime() {
+        return issueDateTime;
     }
 
-    public void setIssueYear(int issueYear) {
-        this.issueYear = issueYear;
+    public void setIssueDateTime(LocalDateTime issueDateTime) {
+        this.issueDateTime = issueDateTime;
     }
 
     public String getIsbn() {
@@ -77,5 +86,13 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public LocalDateTime getScannedDateTime() {
+        return scannedDateTime;
+    }
+
+    public void setScannedDateTime(LocalDateTime scannedDateTime) {
+        this.scannedDateTime = scannedDateTime;
     }
 }

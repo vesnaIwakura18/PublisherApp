@@ -1,7 +1,6 @@
 spring:
 
 
-
   kafka:
     bootstrap-servers:
       - localhost:9092
@@ -32,7 +31,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/publisherAppDB
+    url: jdbc:postgresql://localhost:5432/publisher_app_db
     username: postgres
     password: postgres
 

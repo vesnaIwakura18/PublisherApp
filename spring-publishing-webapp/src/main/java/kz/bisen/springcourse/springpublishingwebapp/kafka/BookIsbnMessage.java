@@ -10,15 +10,20 @@ public class BookIsbnMessage {
 
     private int amount;
 
-    public BookIsbnMessage(List<String> isbns, int amount) {
+    private String partition;
+
+    public BookIsbnMessage(List<String> isbns,
+                           int amount,
+                           String partition) {
         this.isbns = isbns;
         this.amount = amount;
+        this.partition = partition;
     }
 
     public BookIsbnMessage() {}
 
     public static BookIsbnMessage of(List<String> isbns, int amount) {
-        return new BookIsbnMessage(isbns, amount);
+        return new BookIsbnMessage(isbns, amount, "publisher-group");
     }
 
     @Override

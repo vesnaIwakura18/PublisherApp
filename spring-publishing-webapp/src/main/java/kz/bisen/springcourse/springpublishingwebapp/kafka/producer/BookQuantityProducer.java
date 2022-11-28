@@ -15,6 +15,6 @@ public class BookQuantityProducer {
     }
 
     public void sendMessageToTopic(BookIsbnMessage message) {
-        kafkaTemplate.send("library.topic", message);
+        kafkaTemplate.send("library.topic", message.getPartition(), message);
     }
 }

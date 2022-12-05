@@ -19,7 +19,8 @@ public class AuthorController {
     private final DefaultAuthorDtoBuilder dtoBuilder;
 
     @Autowired
-    public AuthorController(DefaultAuthorService service, DefaultAuthorDtoBuilder dtoBuilder) {
+    public AuthorController(DefaultAuthorService service,
+                            DefaultAuthorDtoBuilder dtoBuilder) {
         this.service = service;
         this.dtoBuilder = dtoBuilder;
     }

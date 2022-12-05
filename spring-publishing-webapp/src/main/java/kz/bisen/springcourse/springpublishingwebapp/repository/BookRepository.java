@@ -17,5 +17,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
             nativeQuery = true)
     Optional<LocalDateTime> findLastScanDateTime();
 
-    List<Book> findByScannedDateTimeLessThan(LocalDateTime localDateTime);
+    List<Book> findByIssueDateTimeGreaterThan(LocalDateTime localDateTime);
+
+    List<Book> findAllByIsbn(String isbn);
 }

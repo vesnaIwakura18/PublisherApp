@@ -60,9 +60,12 @@ public class BookScheduler {
     }
 
     @Scheduled(fixedRateString = "PT05H", initialDelay = 1000)
-    private void checkNewBooks() throws Exception {
-        final LocalDateTime dateTime = repository.findLastScanDateTime().orElseThrow(Exception::new);
-        final List<Book> books = repository.findByScannedDateTimeLessThan(dateTime);
+    private void checkNewBooks() {
+        final Optional<LocalDateTime> dateTime = repository.findLastScanDateTime();
+
+        if(dateTime.isEmpty()) return;
+
+        final List<Book> books = repository.findByIssueDateTimeGreaterThan(dateTime.get());
         final List<BookDto> bookDtos = books.stream().map(dtoBuilder::fromBook).toList();
         producer.send(bookDtos);
 

@@ -9,16 +9,16 @@
 -- INSERT INTO author (first_name, last_name)
 -- values ('Test5', 'Test5');
 --
--- INSERT INTO book (title, issue_year, amount)
--- VALUES ('Test1', 2000, 50);
--- INSERT INTO book (title, issue_year, amount)
--- VALUES ('Test2', 2000, 50);
--- INSERT INTO book (title, issue_year, amount)
--- VALUES ('Test3', 2000, 50);
--- INSERT INTO book (title, issue_year, amount)
--- VALUES ('Test4', 2000, 50);
--- INSERT INTO book (title, issue_year, amount)
--- VALUES ('Test5', 2000, 50);
+-- INSERT INTO book (title, amount, isbn, issue_datetime)
+-- VALUES ('Test1', 50, 1-1-1, '2020-06-22 19:10:25-07');
+-- INSERT INTO book (title, amount, isbn, issue_datetime)
+-- VALUES ('Test2', 50, 1-1-1, '2020-06-22 19:10:25-07');
+-- INSERT INTO book (title, amount, isbn, issue_datetime)
+-- VALUES ('Test3', 50, 1-1-1, '2020-06-22 19:10:25-07');
+-- INSERT INTO book (title, amount, isbn, issue_datetime)
+-- VALUES ('Test4', 50, 1-1-1, '2020-06-22 19:10:25-07');
+-- INSERT INTO book (title, amount, isbn, issue_datetime)
+-- VALUES ('Test5', 50, 1-1-1, '2020-06-22 19:10:25-07');
 --
 -- insert into client (amount, name)
 -- values (20, 'Test1');
@@ -34,9 +34,9 @@
 -- insert into publisher (first_name, last_name)
 -- VALUES ('Test3', 'Test3');
 --
--- insert into book_client (amount, book_id, client_id)
--- VALUES (12, 1, 2);
--- insert into book_client (amount, book_id, client_id)
--- VALUES (12, 2, 1);
--- insert into book_client (amount, book_id, client_id)
--- VALUES (12, 3, 5);
+-- -- insert into book_client (amount, book_id, client_id)
+-- -- VALUES (12, 1, 2);
+-- -- insert into book_client (amount, book_id, client_id)
+-- -- VALUES (12, 2, 1);
+-- -- insert into book_client (amount, book_id, client_id)
+-- -- VALUES (12, 3, 5);

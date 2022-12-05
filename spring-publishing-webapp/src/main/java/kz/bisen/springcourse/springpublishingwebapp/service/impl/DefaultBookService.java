@@ -57,6 +57,10 @@ public class DefaultBookService implements BookService {
         return id;
     }
 
+    public Book findByIsbn(String isbn) {
+        return bookRepository.findByIsbn(isbn).orElseThrow(() -> bookNotFoundException);
+    }
+
     public void throwNotValidFieldException(BindingResult bindingResult) {
         List<FieldError> fieldErrors = bindingResult.getFieldErrors();
         StringBuilder errorMsg = new StringBuilder();

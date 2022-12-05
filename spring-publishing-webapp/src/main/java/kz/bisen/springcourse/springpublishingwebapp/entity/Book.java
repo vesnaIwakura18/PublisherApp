@@ -1,21 +1,20 @@
 package kz.bisen.springcourse.springpublishingwebapp.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Tables;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table
+@Table(name = "book")
+@SecondaryTable(name = "book_scan", pkJoinColumns = @PrimaryKeyJoinColumn(name = "book_id", referencedColumnName = "id"))
 public class Book {
     @Id
-    @JoinColumns(value = {
-            @JoinColumn(table = "Book"),
-            @JoinColumn(table = "Book_scan")
-    })
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -24,7 +23,7 @@ public class Book {
     @Size(max = 100, message = "Title length must not be greater than 100 characters")
     private String title;
 
-    @Column
+    @Column(name = "issue_datetime")
     @NotNull
     private LocalDateTime issueDateTime;
 
@@ -34,8 +33,11 @@ public class Book {
     @Column
     private String isbn;
 
-    @Column
-    @JoinTable(name = "book_scan")
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    private Author author;
+
+    @Column(table = "book_scan")
     private LocalDateTime scannedDateTime;
 
     public int getAmount() {
@@ -46,11 +48,13 @@ public class Book {
         this.amount = amount;
     }
 
-    public Book(String title, LocalDateTime issueDateTime, int amount, String isbn) {
+    public Book(String title, LocalDateTime issueDateTime, int amount, String isbn, LocalDateTime scannedDateTime, Author author) {
         this.title = title;
         this.issueDateTime = issueDateTime;
         this.amount = amount;
         this.isbn = isbn;
+        this.scannedDateTime = scannedDateTime;
+        this.author = author;
     }
 
     public Book() {
@@ -86,6 +90,14 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public LocalDateTime getScannedDateTime() {

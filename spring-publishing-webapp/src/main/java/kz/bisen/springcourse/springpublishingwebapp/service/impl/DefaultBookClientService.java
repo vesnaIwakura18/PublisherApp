@@ -39,7 +39,10 @@ public class DefaultBookClientService {
         StringBuilder errorMsg = new StringBuilder();
 
         fieldErrors
-                .forEach(e -> errorMsg.append(e.getField()).append(" - ").append(e.getDefaultMessage()));
+                .forEach(e -> errorMsg
+                        .append(e.getField())
+                        .append(" - ")
+                        .append(e.getDefaultMessage()));
 
         throw new NotCreatedException(HttpStatus.UNPROCESSABLE_ENTITY, errorMsg.toString());
     }

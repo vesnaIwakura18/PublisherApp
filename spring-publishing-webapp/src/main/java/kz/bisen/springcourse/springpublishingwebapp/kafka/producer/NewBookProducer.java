@@ -18,6 +18,8 @@ public class NewBookProducer {
 
     public void send(List<BookDto> bookDtos) {
         kafkaTemplate.send("library.topic", bookDtos);
-    } // todo SELECT b.scan_datetime from Book_scan b ORDERED BY b.scan_datetime desc;
+    }
+
+    // todo SELECT b.scan_datetime from Book_scan b ORDERED BY b.scan_datetime desc;
     // todo SELECT book from Book where issue_datetime > scan_datetime;
 }

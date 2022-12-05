@@ -24,6 +24,9 @@ public class Author {
     @Size(max = 30, message = "Last name length must not be greater than 30 characters")
     private String lastName;
 
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
+
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,6 +53,14 @@ public class Author {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public void setLastName(String lastName) {

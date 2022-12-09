@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 public class ClientDto {
-    private Integer id;
 
     @NotEmpty(message = "Name must not be empty")
     @Size(max = 30, message = "Name length must not be greater than 30 characters")
@@ -24,13 +23,6 @@ public class ClientDto {
     public ClientDto() {
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

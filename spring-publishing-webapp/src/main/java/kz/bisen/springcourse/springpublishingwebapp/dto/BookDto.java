@@ -107,5 +107,18 @@ public class BookDto {
     public void setIssueDateTime(LocalDateTime issueDateTime) {
         this.issueDateTime = issueDateTime;
     }
+
+    @Override
+    public String toString() {
+        return "BookDto{" +
+                "title='" + title + '\'' +
+                ", issueDateTime=" + issueDateTime +
+                ", amount=" + amount +
+                ", isbn='" + isbn + '\'' +
+                ", minAmount=" + minAmount +
+                ", authorFirstName='" + authorFirstName + '\'' +
+                ", authorLastName='" + authorLastName + '\'' +
+                '}';
+    }
 }
 

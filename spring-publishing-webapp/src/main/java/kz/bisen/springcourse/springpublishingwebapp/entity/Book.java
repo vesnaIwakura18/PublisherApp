@@ -1,14 +1,10 @@
 package kz.bisen.springcourse.springpublishingwebapp.entity;
 
-import lombok.Data;
-import org.hibernate.annotations.Tables;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "book")

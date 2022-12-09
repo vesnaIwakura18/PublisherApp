@@ -47,3 +47,6 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+
+cxf:
+  path: /service

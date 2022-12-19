@@ -4,6 +4,8 @@ import kz.bisen.springcourse.springpublishingwebapp.dto.BookDto;
 import kz.bisen.springcourse.springpublishingwebapp.dto.builder.impl.DefaultBookDtoBuilder;
 import kz.bisen.springcourse.springpublishingwebapp.entity.Book;
 import kz.bisen.springcourse.springpublishingwebapp.repository.BookRepository;
+import kz.bisen.springcourse.springpublishingwebapp.soap.builder.SoapBookBuilder;
+import kz.bisen.springcourse.springpublishingwebapp.soap.dto.SoapBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,21 +20,21 @@ import java.util.List;
 public class SoapBookService {
     private final BookRepository bookRepository;
 
-    private final DefaultBookDtoBuilder bookDtoBuilder;
+    private final SoapBookBuilder builder;
 
     @Autowired
-    public SoapBookService(BookRepository bookRepository, DefaultBookDtoBuilder bookDtoBuilder) {
+    public SoapBookService(BookRepository bookRepository, SoapBookBuilder builder) {
         this.bookRepository = bookRepository;
-        this.bookDtoBuilder = bookDtoBuilder;
+        this.builder = builder;
     }
 
     @WebMethod(operationName = "get-books")
-    public List<BookDto> getBooks(List<String> isbns) {
+    public List<SoapBook> getBooks(List<String> isbns) {
         final List<Book> foundBooks =
                 isbns
                         .stream()
                         .map(b -> bookRepository.findByIsbn(b).orElse(null))
                         .toList();
-        return foundBooks.stream().map(bookDtoBuilder::fromBook).toList();
+        return foundBooks.stream().map(builder::fromBook).toList();
     }
 }
